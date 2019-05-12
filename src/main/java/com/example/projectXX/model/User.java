@@ -9,14 +9,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     @Email
     private String email;
 
-    public User(@Email String email) {
+    public User() {
+    }
+
+    public User(@Email String email,String name) {
+        this.name = name;
         this.email = email;
     }
 
-    public User() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {

@@ -11,21 +11,21 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String headLine;
-    private  String mainPart;
-    private  String tags;
-    private  Integer likes;
-    private  Integer dislikes;
+    private String mainPart;
+    private String tags;
+    private Integer likes;
+    private Integer dislikes;
     @OneToMany
     private List<Commentary> commentaries;
     @ManyToOne
-    @JoinColumn(name ="category_id")
-    private  Category category;
-    @JoinColumn(name ="user_id")
-    private  User user;
+    @JoinColumn(name = "category_id")
+    private Category category;
+    @JoinColumn(name = "user_id")
+    private User user;
     @OneToMany
     @JsonIgnore
     private List<User> users;
-   @OneToMany
+    @OneToMany
     @JsonIgnore
     private List<UserCheck> userChecks;
 

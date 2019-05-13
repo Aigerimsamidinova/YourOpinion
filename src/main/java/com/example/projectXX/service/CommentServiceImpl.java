@@ -23,7 +23,7 @@ public class CommentServiceImpl implements CrudService<Comment>{
     }
 
     @Override
-    public Comment add(Comment comment) {
+    public Comment save(Comment comment) {
         return commentRep.save(comment);
     }
 

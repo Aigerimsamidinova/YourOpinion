@@ -24,6 +24,7 @@ public class Comment {
     @OneToMany
     @JsonIgnore
     private List<User> users;
+
     @OneToMany
     @JsonIgnore
     private List<UserCheck> userChecks;

@@ -1,4 +1,4 @@
-package com.example.projectXX.service;
-
-public class CommentServiceImpl {
-}
+//package com.example.projectXX.service;
+//
+//public class CommentServiceImpl {
+//}

@@ -1,4 +1,7 @@
 package com.example.projectXX.reposiroty;
 
-public interface UserCheckRep {
+import com.example.projectXX.model.UserCheck;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserCheckRep extends JpaRepository<UserCheck,Long> {
 }

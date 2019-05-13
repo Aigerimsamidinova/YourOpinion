@@ -31,7 +31,7 @@ public class CategoryController {
         }
     }
 
-    @PostMapping("/post")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> saveCategory(@RequestBody Category c) {
         Category category = this.categoryCrudService.save(c);

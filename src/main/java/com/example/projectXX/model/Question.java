@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Question {
+public class Question implements Comparable<Question> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,30 +16,23 @@ public class Question {
     private Integer likes;
     private Integer dislikes;
     @OneToMany
-    private List<Comment> commentaries;
+    private List<Comment> comments;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany
+    @ManyToMany
     @JsonIgnore
     private List<User> users;
-    @OneToMany
+    @ManyToMany
     @JsonIgnore
     private List<UserCheck> userChecks;
 
-    public Question(String headLine, String mainPart, String tags, Integer likes,
-                    Integer dislikes, List<Comment> commentaries, Category category, User user) {
-        this.headLine = headLine;
-        this.mainPart = mainPart;
-        this.tags = tags;
-        this.likes = likes;
-        this.dislikes = dislikes;
-        this.commentaries = commentaries;
-        this.category = category;
-        this.user = user;
+    @Override
+    public int compareTo(Question o) {
+        return getLikes().compareTo(o.getLikes());
     }
 
     public Long getId() {
@@ -90,12 +83,12 @@ public class Question {
         this.dislikes = dislikes;
     }
 
-    public List<Comment> getCommentaries() {
-        return commentaries;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setCommentaries(List<Comment> commentaries) {
-        this.commentaries = commentaries;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Category getCategory() {

@@ -1,6 +1,8 @@
 package com.example.projectXX.controller;
 
 import com.example.projectXX.model.Comment;
+import com.example.projectXX.model.Question;
+import com.example.projectXX.service.CommentService;
 import com.example.projectXX.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,19 @@ public class CommentController {
     @Autowired
     private CrudService<Comment> CommentCrudService;
 
-    @PostMapping("/post")
+    @Autowired
+    private CommentService commentService;
+
+    @GetMapping("/getQuestionCommentsByLikes/{questionId}")
+    public List<Comment> getCommentsByLikes(@PathVariable Long questionId) {
+        return this.commentService.getQuestionCommentsByLikes(questionId);
+    }
+    @GetMapping("/statistics")
+    public List<Comment> getCommentStatistics() {
+        return this.commentService.getAllCommentsByLikes();
+    }
+
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Comment> saveComment(@RequestBody Comment c) {
         Comment comment = this.CommentCrudService.save(c);

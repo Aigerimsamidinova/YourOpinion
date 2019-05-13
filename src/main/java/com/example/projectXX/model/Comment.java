@@ -6,30 +6,29 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Comment {
+public class Comment implements Comparable<Comment> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String text;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
     private Integer likes;
-
     private Integer dislikes;
-
-    @OneToMany
+    @ManyToMany
     @JsonIgnore
     private List<User> users;
-
-    @OneToMany
+    @ManyToMany
     @JsonIgnore
     private List<UserCheck> userChecks;
 
     public Comment() {
+    }
+
+    @Override
+    public int compareTo(Comment o) {
+        return getLikes().compareTo(o.getLikes());
     }
 
     public Comment(String text, User user, Integer likes, Integer dislikes) {

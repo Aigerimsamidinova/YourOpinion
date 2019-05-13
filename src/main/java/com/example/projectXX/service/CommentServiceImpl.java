@@ -1,16 +1,38 @@
 package com.example.projectXX.service;
 
 import com.example.projectXX.model.Comment;
+import com.example.projectXX.model.Question;
 import com.example.projectXX.reposiroty.CommentRep;
+import com.example.projectXX.reposiroty.QuestionRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
-public class CommentServiceImpl implements CrudService<Comment>{
+public class CommentServiceImpl implements CrudService<Comment>, CommentService {
     @Autowired
     private CommentRep commentRep;
+
+    @Autowired
+    private QuestionRep questionRep;
+
+    @Override
+    public List<Comment> getQuestionCommentsByLikes(Long id) {
+        List<Comment> comments = questionRep.findById(id).get().getComments();
+        Collections.sort(comments);
+        Collections.reverse(comments);
+        return comments;
+    }
+
+    @Override
+    public List<Comment> getAllCommentsByLikes() {
+        List<Comment> comments = commentRep.findAll();
+        Collections.sort(comments);
+        Collections.reverse(comments);
+        return comments;
+    }
 
     @Override
     public List<Comment> getAll() {

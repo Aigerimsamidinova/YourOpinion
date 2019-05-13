@@ -2,6 +2,7 @@ package com.example.projectXX.controller;
 
 import com.example.projectXX.model.Question;
 import com.example.projectXX.service.CrudService;
+import com.example.projectXX.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,19 @@ import java.util.List;
 public class QuestionController {
     @Autowired
     private CrudService<Question> questionCrudService;
+
+    @Autowired
+    private QuestionService questionService;
+
+    @GetMapping("/statistics")
+    public List<Question> getQuestionsByLikes() {
+        return this.questionService.getQuestionStatistics();
+    }
+
+    @GetMapping("/top3")
+    public List<Question> getQuestionStatistics() {
+        return this.questionService.getTop3Questions();
+    }
 
     @GetMapping("/getAll")
     public List<Question> getAll() {
@@ -31,7 +45,7 @@ public class QuestionController {
         }
     }
 
-    @PostMapping("/post")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Question> saveQuestion(@RequestBody Question q) {
         Question question = this.questionCrudService.save(q);

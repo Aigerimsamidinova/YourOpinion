@@ -1,5 +1,7 @@
 package com.example.projectXX.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,27 +22,20 @@ public class Comment {
     private Integer dislikes;
 
     @OneToMany
-    @JoinColumn(name = "user_id")
+    @JsonIgnore
     private List<User> users;
-
-    // private List<UserCheck> checkUser;
-
-    private String comment;
+    @OneToMany
+    @JsonIgnore
+    private List<UserCheck> userChecks;
 
     public Comment() {
     }
 
-    public Comment(String text) {
-        this.text = text;
-    }
-
-    public Comment(String text, User user, Integer likes, Integer dislikes, List<User> users, String comment) {
+    public Comment(String text, User user, Integer likes, Integer dislikes) {
         this.text = text;
         this.user = user;
         this.likes = likes;
         this.dislikes = dislikes;
-        this.users = users;
-        this.comment = comment;
     }
 
     public Long getId() {
@@ -91,11 +86,11 @@ public class Comment {
         this.users = users;
     }
 
-    public String getComment() {
-        return comment;
+    public List<UserCheck> getUserChecks() {
+        return userChecks;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setUserChecks(List<UserCheck> userChecks) {
+        this.userChecks = userChecks;
     }
 }

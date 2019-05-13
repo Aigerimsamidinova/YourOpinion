@@ -16,7 +16,7 @@ public class Question {
     private Integer likes;
     private Integer dislikes;
     @OneToMany
-    private List<Commentary> commentaries;
+    private List<Comment> commentaries;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -29,11 +29,8 @@ public class Question {
     @JsonIgnore
     private List<UserCheck> userChecks;
 
-    public Question(Long id, String headLine, String mainPart,
-                    String tags, Integer likes, Integer dislikes,
-                    List<Commentary> commentaries, Category category,
-                    User user, List<User> users, List<UserCheck> userChecks) {
-        this.id = id;
+    public Question(String headLine, String mainPart, String tags, Integer likes,
+                    Integer dislikes, List<Comment> commentaries, Category category, User user) {
         this.headLine = headLine;
         this.mainPart = mainPart;
         this.tags = tags;
@@ -42,8 +39,14 @@ public class Question {
         this.commentaries = commentaries;
         this.category = category;
         this.user = user;
-        this.users = users;
-        this.userChecks = userChecks;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getHeadLine() {
@@ -86,11 +89,11 @@ public class Question {
         this.dislikes = dislikes;
     }
 
-    public List<Commentary> getCommentaries() {
+    public List<Comment> getCommentaries() {
         return commentaries;
     }
 
-    public void setCommentaries(List<Commentary> commentaries) {
+    public void setCommentaries(List<Comment> commentaries) {
         this.commentaries = commentaries;
     }
 

@@ -6,23 +6,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Question implements Comparable<Question> {
+public class Comment implements Comparable<Comment> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String headLine;
-    private String mainPart;
-    private String tags;
-    private Integer likes;
-    private Integer dislikes;
-    @OneToMany
-    private List<Comment> comments;
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private String text;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    private Integer likes;
+    private Integer dislikes;
     @ManyToMany
     @JsonIgnore
     private List<User> users;
@@ -30,9 +23,19 @@ public class Question implements Comparable<Question> {
     @JsonIgnore
     private List<UserCheck> userChecks;
 
+    public Comment() {
+    }
+
     @Override
-    public int compareTo(Question o) {
+    public int compareTo(Comment o) {
         return getLikes().compareTo(o.getLikes());
+    }
+
+    public Comment(String text, User user, Integer likes, Integer dislikes) {
+        this.text = text;
+        this.user = user;
+        this.likes = likes;
+        this.dislikes = dislikes;
     }
 
     public Long getId() {
@@ -43,28 +46,20 @@ public class Question implements Comparable<Question> {
         this.id = id;
     }
 
-    public String getHeadLine() {
-        return headLine;
+    public String getText() {
+        return text;
     }
 
-    public void setHeadLine(String headLine) {
-        this.headLine = headLine;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getMainPart() {
-        return mainPart;
+    public User getUser() {
+        return user;
     }
 
-    public void setMainPart(String mainPart) {
-        this.mainPart = mainPart;
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getLikes() {
@@ -81,30 +76,6 @@ public class Question implements Comparable<Question> {
 
     public void setDislikes(Integer dislikes) {
         this.dislikes = dislikes;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<User> getUsers() {

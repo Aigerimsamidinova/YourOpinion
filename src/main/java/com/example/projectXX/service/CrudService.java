@@ -9,5 +9,4 @@ public interface CrudService<T> {
     T update(T t);
     void deleteById(Long id);
     void deleteAll();
-
 }

@@ -85,7 +85,7 @@ public class Bootstrap implements CommandLineRunner {
         q1.setHeadLine("Xiaomi Redmi 5");
         q1.setMainPart("Говорят что батарейка держится отлично, но сбрасывает при разговоре, " +
                 "что можете сказать на счет этого ?");
-        q1.setTags("#XiaomiRedmi5 #Xiaomi #XiaomiRedmi");
+        q1.setTags("#Xiaomi");
         q1.setComments(comments);
         q1.setLikes(5);
         q1.setDislikes(1);
@@ -131,7 +131,7 @@ public class Bootstrap implements CommandLineRunner {
         Question q2 = new Question();
         q2.setHeadLine("Iphone 7 plus");
         q2.setMainPart("Хочу купить себе Iphone 7 plus, стоит ли покупать ?");
-        q2.setTags("#Iphone #Iphone7plus #Iphone7");
+        q2.setTags("#Iphone");
         q2.setComments(comments1);
         q2.setLikes(17);
         q2.setDislikes(0);
@@ -176,7 +176,7 @@ public class Bootstrap implements CommandLineRunner {
         Question q3 = new Question();
         q3.setHeadLine("Samsung");
         q3.setMainPart("Что можете сказать о Samsung S9? Заранее спасибо за ответ!");
-        q3.setTags("#SamsungS9 #Samsung ");
+        q3.setTags("#Samsung");
         q3.setComments(comments2);
         q3.setLikes(21);
         q3.setDislikes(3);

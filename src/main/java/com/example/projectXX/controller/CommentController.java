@@ -23,9 +23,15 @@ public class CommentController {
     public List<Comment> getCommentsByLikes(@PathVariable Long questionId) {
         return this.commentService.getQuestionCommentsByLikes(questionId);
     }
+
     @GetMapping("/statistics")
     public List<Comment> getCommentStatistics() {
         return this.commentService.getAllCommentsByLikes();
+    }
+
+    @GetMapping("/getByTag/{tag}")
+    public List<Comment> getCommentsByTag(@PathVariable String tag) {
+        return this.commentService.getCommentsByTags("#" + tag);
     }
 
     @PostMapping("/add")

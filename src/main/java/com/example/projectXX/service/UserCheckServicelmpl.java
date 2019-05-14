@@ -32,7 +32,7 @@ public class UserCheckServicelmpl implements CrudService<UserCheck> {
 
     @Override
     public void deleteById(Long id) {
-
+        this.userCheckRep.deleteById(id);
     }
 
     @Override

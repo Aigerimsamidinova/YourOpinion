@@ -1,7 +1,6 @@
 package com.example.projectXX.controller;
 
 import com.example.projectXX.model.Comment;
-import com.example.projectXX.model.Question;
 import com.example.projectXX.service.CommentService;
 import com.example.projectXX.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;

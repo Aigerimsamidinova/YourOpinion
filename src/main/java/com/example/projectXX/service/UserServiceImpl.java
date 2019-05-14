@@ -81,7 +81,7 @@ public class UserServiceImpl implements CrudService<User>, UserService {
                 userCheckRep.save(userCheck);
                 userBln.add(userCheck);
                 userIds.add(user1);
-            } else {
+            } else if (mark.equals('-')) {
                 question.setDislikes(question.getDislikes() + 1);
                 UserCheck userCheck = new UserCheck('-');
                 userCheck.setUserId(userId);
@@ -99,6 +99,7 @@ public class UserServiceImpl implements CrudService<User>, UserService {
                             question.setLikes(question.getLikes() - 1);
                             userCheckRep.save(userCheck);
                         }
+
                     } else {
                         if (mark.equals('+')) {
                             userCheck.setCharacter('+');
@@ -113,7 +114,8 @@ public class UserServiceImpl implements CrudService<User>, UserService {
         question.setUsers(userIds);
         question.setUserChecks(userBln);
         questionRep.save(question);
-        return question;    }
+        return question;
+    }
 
     @Override
     public Comment putMarkOnTheComment(Long userId, Long questionId, Long commentId, Character mark) {

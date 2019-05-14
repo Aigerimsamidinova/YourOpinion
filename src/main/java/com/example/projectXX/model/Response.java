@@ -1,5 +1,5 @@
-//package com.example.projectXX.model;
-//
-//public class Response {
-//
-//}
+package com.example.projectXX.model;
+
+public class Response {
+
+}

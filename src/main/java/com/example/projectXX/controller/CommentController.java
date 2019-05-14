@@ -1,4 +1,4 @@
-//package com.example.projectXX.controller;
-//
-//public class CommentController {
-//}
+package com.example.projectXX.controller;
+
+public class CommentController {
+}

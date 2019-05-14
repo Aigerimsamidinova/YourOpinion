@@ -1,4 +1,4 @@
-//package com.example.projectXX.model;
-//
-//public class UserCheck {
-//}
+package com.example.projectXX.model;
+
+public class UserCheck {
+}

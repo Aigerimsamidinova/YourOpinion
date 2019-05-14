@@ -7,4 +7,5 @@ import java.util.List;
 public interface CommentService {
     List<Comment> getQuestionCommentsByLikes(Long id);
     List<Comment> getAllCommentsByLikes();
+    List<Comment> getCommentsByTags(String tag);
 }

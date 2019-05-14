@@ -7,6 +7,7 @@ import com.example.projectXX.reposiroty.QuestionRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +18,18 @@ public class CommentServiceImpl implements CrudService<Comment>, CommentService 
 
     @Autowired
     private QuestionRep questionRep;
+
+    @Override
+    public List<Comment> getCommentsByTags(String tag) {
+        List<Question> questions = questionRep.findAll();
+        List<Comment> comments = new ArrayList<>();
+        for (Question question : questions) {
+            if (question.getTags().equals(tag)) {
+                comments.addAll(question.getComments());
+            }
+        }
+        return comments;
+    }
 
     @Override
     public List<Comment> getQuestionCommentsByLikes(Long id) {

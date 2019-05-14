@@ -1,7 +1,6 @@
 package com.example.projectXX.controller;
 
 import com.example.projectXX.model.Comment;
-import com.example.projectXX.model.Question;
 import com.example.projectXX.service.CommentService;
 import com.example.projectXX.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,15 @@ public class CommentController {
     public List<Comment> getCommentsByLikes(@PathVariable Long questionId) {
         return this.commentService.getQuestionCommentsByLikes(questionId);
     }
+
     @GetMapping("/statistics")
     public List<Comment> getCommentStatistics() {
         return this.commentService.getAllCommentsByLikes();
+    }
+
+    @GetMapping("/getByTag/{tag}")
+    public List<Comment> getCommentsByTag(@PathVariable String tag) {
+        return this.commentService.getCommentsByTags("#" + tag);
     }
 
     @PostMapping("/add")
